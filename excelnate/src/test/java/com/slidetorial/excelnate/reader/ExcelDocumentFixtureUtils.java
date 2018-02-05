@@ -6,7 +6,7 @@ package com.slidetorial.excelnate.reader;
 import java.io.IOException;
 import java.io.InputStream;
 import org.apache.poi.util.IOUtils;
-import com.slidetorial.excelnate.mapping.row.testobjects.TestObject;
+import com.slidetorial.excelnate.testobjects.TestObject;
 
 /**
  * @author goobar

@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.slidetorial.excelnate.mapping.row.testobjects;
+package com.slidetorial.excelnate.testobjects;
 
 import java.time.LocalDate;
 import com.slidetorial.excelnate.mapping.cell.ExcelCell;

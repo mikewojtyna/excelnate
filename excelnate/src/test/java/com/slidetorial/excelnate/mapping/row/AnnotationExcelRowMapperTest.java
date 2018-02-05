@@ -20,13 +20,13 @@ import org.junit.Before;
 import org.junit.Test;
 import com.google.common.testing.NullPointerTester;
 import com.slidetorial.excelnate.mapping.row.impl.AnnotationExcelRowMapper;
-import com.slidetorial.excelnate.mapping.row.testobjects.TestAbstractClass;
-import com.slidetorial.excelnate.mapping.row.testobjects.TestInterface;
-import com.slidetorial.excelnate.mapping.row.testobjects.TestObject;
-import com.slidetorial.excelnate.mapping.row.testobjects.TestObject2;
-import com.slidetorial.excelnate.mapping.row.testobjects.TestObject3;
-import com.slidetorial.excelnate.mapping.row.testobjects.TestObject4;
-import com.slidetorial.excelnate.mapping.row.testobjects.TestObject5;
+import com.slidetorial.excelnate.testobjects.TestAbstractClass;
+import com.slidetorial.excelnate.testobjects.TestInterface;
+import com.slidetorial.excelnate.testobjects.TestObject;
+import com.slidetorial.excelnate.testobjects.TestObject2;
+import com.slidetorial.excelnate.testobjects.TestObject3;
+import com.slidetorial.excelnate.testobjects.TestObject4;
+import com.slidetorial.excelnate.testobjects.TestObject5;
 
 /**
  * @author goobar

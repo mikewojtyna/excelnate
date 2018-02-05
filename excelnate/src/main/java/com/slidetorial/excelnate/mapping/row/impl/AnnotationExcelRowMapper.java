@@ -13,7 +13,6 @@ import java.util.stream.Stream;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Row.MissingCellPolicy;
-import org.springframework.core.ResolvableType;
 import com.slidetorial.excelnate.mapping.cell.ExcelCell;
 import com.slidetorial.excelnate.mapping.cell.ExcelCellMapper;
 import com.slidetorial.excelnate.mapping.cell.ExcelCellMapperException;
@@ -121,7 +120,6 @@ public class AnnotationExcelRowMapper<T> implements ExcelRowMapper<T>
 	/**
 	 * @param cellIndex
 	 * @param row
-	 * @param fieldType
 	 * @param cellMapperClass
 	 * @return
 	 * @throws IllegalAccessException
@@ -134,7 +132,6 @@ public class AnnotationExcelRowMapper<T> implements ExcelRowMapper<T>
 	 * @throws IllegalArgumentException
 	 */
 	private Object getCellValue(int cellIndex, Row row,
-		ResolvableType fieldType,
 		Class<? extends ExcelCellMapper<?>> cellMapperClass)
 		throws NullPointerException, ExcelCellMapperException,
 		InstantiationException, IllegalAccessException,
@@ -231,8 +228,7 @@ public class AnnotationExcelRowMapper<T> implements ExcelRowMapper<T>
 			}
 			Object cellValue = getCellValue(
 				getCellIndex(document, excelCellAnnotation),
-				row, resolveFieldType(field),
-				excelCellAnnotation.cellMapper());
+				row, excelCellAnnotation.cellMapper());
 			if (cellValue != null)
 			{
 				setField(field, cellValue, object);
@@ -246,15 +242,6 @@ public class AnnotationExcelRowMapper<T> implements ExcelRowMapper<T>
 				"Mapping Excel cell to field {0} in object {1} failed.",
 				field, object), e);
 		}
-	}
-
-	/**
-	 * @param field
-	 * @return
-	 */
-	private ResolvableType resolveFieldType(Field field)
-	{
-		return ResolvableType.forField(field, 0);
 	}
 
 	/**
@@ -287,8 +274,7 @@ public class AnnotationExcelRowMapper<T> implements ExcelRowMapper<T>
 		throws NoSuchMethodException, SecurityException
 	{
 		return object.getClass().getMethod(
-			fieldMethodName("set", field),
-			resolveFieldType(field).resolve());
+			fieldMethodName("set", field), field.getType());
 	}
 
 	/**

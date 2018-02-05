@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.slidetorial.excelnate.reader.testobjects;
+package com.slidetorial.excelnate.testobjects;
 
 import com.slidetorial.excelnate.mapping.cell.ExcelCell;
 import com.slidetorial.excelnate.mapping.cell.ExcelSource;

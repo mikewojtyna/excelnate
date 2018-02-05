@@ -13,7 +13,7 @@ import com.slidetorial.excelnate.mapping.row.ExcelRowMapper;
 import com.slidetorial.excelnate.mapping.row.SourceDocuments;
 import com.slidetorial.excelnate.mapping.row.impl.AnnotationExcelRowMapper;
 import com.slidetorial.excelnate.reader.impl.ApachePoiExcelReader;
-import com.slidetorial.excelnate.reader.testobjects.SimpleTestObject;
+import com.slidetorial.excelnate.testobjects.SimpleTestObject;
 
 /**
  * @author goobar
