@@ -103,7 +103,7 @@ Check tests (especially inside the ```reader``` package) to see more examples.
 
 ### Cell mappers
 
-The library is designed to easily create your own cell mappers. To create a custom cell mapper, simple implement ExcelCellMapper interface and point to the new mapper inside @ExcelCell annotation using cellMapper argument.
+The library is designed to easily create your own cell mappers. To create a custom cell mapper, simply implement ExcelCellMapper interface and point to the new mapper inside @ExcelCell annotation using cellMapper argument.
 
 ```java
 @ExcelCell(cellMapper = MyCustomMapper.class,
