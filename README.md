@@ -7,7 +7,7 @@ Excelnate is a library to map Excel files to Java objects.
 Here's the basic usage of the library. The following code maps the Excel file to a list of objects. Each object corresponds to a single Excel row.
 
 
-```
+```java
 	@Test
 	public void should_MapFirstDataRow() throws Exception
 	{
@@ -37,7 +37,7 @@ Here's the basic usage of the library. The following code maps the Excel file to
 
 SimpleTestObject in the example includes Excelnate annotations to map cells into fields.
 
-```
+```java
 public class SimpleTestObject
 {
 	@ExcelCell(cellMapper = ExcelCellStringMapper.class,
