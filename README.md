@@ -46,3 +46,40 @@ public class SimpleTestObject
 	private String stringField;
 }
 ```
+
+If you want to include complex objects as fields (which themselves include @ExcelCell or @ExcelObject annotations on fields), you can use @ExcelObject annotation.
+```java
+public class TestNestedObject
+{
+
+	@ExcelObject
+	private TestNestedObject2 complexField2;
+}
+```
+
+It's important to remember that annotated classes must have setters for each mapped field.
+
+### More examples
+
+Check tests (especially inside the ```reader``` package) to see more examples.
+
+### Cell mappers
+
+The library is designed to easily create your own cell mappers. To create a custom cell mapper, simple implement ExcelCellMapper interface and point to the new mapper inside @ExcelCell annotation using cellMapper argument.
+
+```java
+@ExcelCell(cellMapper = MyCustomMapper.class,
+		sources = { @ExcelSource(index = 0,
+			source = SourceDocuments.DEFAULT_SOURCE_DOCUMENT) })
+	private MyClass stringField;
+	
+public class MyCustomMapper implements ExcelCellMapper<MyClass> 
+{
+	@Override
+	public MyClass map(Cell cell)
+		throws NullPointerException, ExcelCellMapperException
+	{
+		// TODO: implement your custom mapping
+	}
+}
+```
