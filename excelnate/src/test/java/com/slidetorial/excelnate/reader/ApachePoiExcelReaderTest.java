@@ -47,7 +47,7 @@ public class ApachePoiExcelReaderTest
 			.testObjectDocument();
 		// create reader which will ignore only first (index 0) header
 		// row
-		ApachePoiExcelReader<SimpleTestObject> reader = ApachePoiExcelReader
+		ExcelReader<SimpleTestObject> reader = ApachePoiExcelReader
 			.instance(rowMapper, 0);
 		// first data row object
 		SimpleTestObject testObject1 = new SimpleTestObject();
@@ -73,7 +73,7 @@ public class ApachePoiExcelReaderTest
 			.testObjectDocument();
 		// create reader which will ignore 1st (index 0), 4th (index 3)
 		// and fifth (index 4) rows
-		ApachePoiExcelReader<SimpleTestObject> reader = ApachePoiExcelReader
+		ExcelReader<SimpleTestObject> reader = ApachePoiExcelReader
 			.instance(rowMapper, 0, 3, 4);
 		// these objects should be mapped
 		SimpleTestObject testObject1 = new SimpleTestObject();
@@ -104,7 +104,7 @@ public class ApachePoiExcelReaderTest
 			.testObjectDocument();
 		// create reader which will ignore the last row with special
 		// meaning (-1)
-		ApachePoiExcelReader<SimpleTestObject> reader = ApachePoiExcelReader
+		ExcelReader<SimpleTestObject> reader = ApachePoiExcelReader
 			.instance(rowMapper, -1);
 		// these objects should be mapped
 		SimpleTestObject testObject5 = new SimpleTestObject();
@@ -124,7 +124,7 @@ public class ApachePoiExcelReaderTest
 		throws Exception
 	{
 		// given
-		ApachePoiExcelReader<SimpleTestObject> reader = ApachePoiExcelReader
+		ExcelReader<SimpleTestObject> reader = ApachePoiExcelReader
 			.instance(rowMapper);
 
 		// when
