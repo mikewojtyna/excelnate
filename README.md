@@ -71,8 +71,9 @@ The library is designed to easily create your own cell mappers. To create a cust
 @ExcelCell(cellMapper = MyCustomMapper.class,
 		sources = { @ExcelSource(index = 0,
 			source = SourceDocuments.DEFAULT_SOURCE_DOCUMENT) })
-	private MyClass stringField;
-	
+private MyClass stringField;
+```
+```java	
 public class MyCustomMapper implements ExcelCellMapper<MyClass> 
 {
 	@Override
