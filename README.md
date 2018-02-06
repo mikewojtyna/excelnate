@@ -8,31 +8,31 @@ Here's the basic usage of the library. The following code maps the Excel file to
 
 
 ```java
-	@Test
-	public void should_MapFirstDataRow() throws Exception
-	{
-		// given
-		// file contains 6 rows, 1st row being the header, rest rows
-		// being data rows - refer to the file "test-objects.xlsx" to
-		// see the values
-		ExcelDocument excelDocument = ExcelDocumentFixtureUtils
-			.testObjectDocument();
-		// create reader which will ignore only first (index 0) header
-		// row
-		ExcelReader<SimpleTestObject> reader = ApachePoiExcelReader
-			.instance(rowMapper, 0);
-		// first data row object
-		SimpleTestObject testObject1 = new SimpleTestObject();
-		testObject1.setStringField("string1");
+@Test
+public void should_MapFirstDataRow() throws Exception
+{
+	// given
+	// file contains 6 rows, 1st row being the header, rest rows
+	// being data rows - refer to the file "test-objects.xlsx" to
+	// see the values
+	ExcelDocument excelDocument = ExcelDocumentFixtureUtils
+		.testObjectDocument();
+	// create reader which will ignore only first (index 0) header
+	// row
+	ExcelReader<SimpleTestObject> reader = ApachePoiExcelReader
+		.instance(rowMapper, 0);
+	// first data row object
+	SimpleTestObject testObject1 = new SimpleTestObject();
+	testObject1.setStringField("string1");
 
-		// when
-		List<SimpleTestObject> objects = reader.read(excelDocument);
+	// when
+	List<SimpleTestObject> objects = reader.read(excelDocument);
 
-		// then
-		// 1st row (header) should be ignored
-		assertThat(objects).hasSize(5);
-		assertThat(objects.get(0)).isEqualTo(testObject1);
-	}
+	// then
+	// 1st row (header) should be ignored
+	assertThat(objects).hasSize(5);
+	assertThat(objects.get(0)).isEqualTo(testObject1);
+}
 ```
 
 SimpleTestObject in the example includes Excelnate annotations to map cells into fields.
@@ -40,10 +40,20 @@ SimpleTestObject in the example includes Excelnate annotations to map cells into
 ```java
 public class SimpleTestObject
 {
+
 	@ExcelCell(cellMapper = ExcelCellStringMapper.class,
 		sources = { @ExcelSource(index = 0,
 			source = SourceDocuments.DEFAULT_SOURCE_DOCUMENT) })
-	private String stringField;
+	private String stringField;	
+
+	/**
+	 * @param stringField
+	 *                the stringField to set
+	 */
+	public void setStringField(String stringField)
+	{
+		this.stringField = stringField;
+	}
 }
 ```
 
@@ -54,6 +64,34 @@ public class TestNestedObject
 
 	@ExcelObject
 	private TestNestedObject2 complexField2;
+	
+	/**
+	 * @param complexField2
+	 *                the complexField2 to set
+	 */
+	public void setComplexField2(TestNestedObject2 complexField2)
+	{
+		this.complexField2 = complexField2;
+	}
+}
+```
+```java
+public class TestNestedObject2
+{
+
+	@ExcelCell(cellMapper = ExcelCellStringMapper.class,
+		sources = { @ExcelSource(index = 1,
+			source = SourceDocuments.DEFAULT_SOURCE_DOCUMENT) })
+	private String stringField;
+
+	/**
+	 * @param stringField
+	 *                the stringField to set
+	 */
+	public void setStringField(String stringField)
+	{
+		this.stringField = stringField;
+	}
 }
 ```
 
@@ -76,6 +114,7 @@ private MyClass stringField;
 ```java	
 public class MyCustomMapper implements ExcelCellMapper<MyClass> 
 {
+
 	@Override
 	public MyClass map(Cell cell)
 		throws NullPointerException, ExcelCellMapperException
