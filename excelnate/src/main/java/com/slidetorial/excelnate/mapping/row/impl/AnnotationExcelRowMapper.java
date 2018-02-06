@@ -208,8 +208,6 @@ public class AnnotationExcelRowMapper<T> implements ExcelRowMapper<T>
 	{
 		try
 		{
-			ExcelCell excelCellAnnotation = field
-				.getAnnotation(ExcelCell.class);
 			ExcelObject excelObjectAnnotation = field
 				.getAnnotation(ExcelObject.class);
 			if (excelObjectAnnotation != null)
@@ -222,6 +220,8 @@ public class AnnotationExcelRowMapper<T> implements ExcelRowMapper<T>
 				setField(field, complexObjectInstance, object);
 				return;
 			}
+			ExcelCell excelCellAnnotation = field
+				.getAnnotation(ExcelCell.class);
 			if (excelCellAnnotation == null)
 			{
 				return;
